@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache Hudi Assistant</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        form { margin-bottom: 20px; }
+        input[type="text"] { width: 70%; padding: 10px; }
+        input[type="submit"] { padding: 10px 20px; }
+        .answer-box {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <h1>Apache Hudi Assistant</h1>
+    <form method="POST">
+        <input type="text" name="query" placeholder="Ask a question about Apache Hudi" required>
+        <input type="submit" value="Ask">
+    </form>
+    {% if query %}
+        <h2>Your question:</h2>
+        <p>{{ query }}</p>
+        <h2>Answer:</h2>
+        <div class="answer-box">{{ answer }}</div>
+    {% endif %}
+</body>
+</html>
