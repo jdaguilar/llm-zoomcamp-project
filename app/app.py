@@ -16,18 +16,33 @@ client = OpenAI(
 )
 
 
-def vector_elastic_search(vector_search_term):
-    query = {
+def vector_elastic_search(search_term, vector_search_term):
+    vector_query = {
         "field": "text_vector",
         "query_vector": vector_search_term,
         "k": 5,
         "num_candidates": 10000,
+        "boost": 0.5,
+    }
+
+    keyword_query = {
+        "bool": {
+            "must": {
+                "multi_match": {
+                    "query": search_term,
+                    "fields": ["text^2", "file_directory"],
+                    "type": "best_fields",
+                    "boost": 0.5,
+                }
+            }
+        }
     }
 
     response = es_client.search(
         index="file_directory",
-        knn=query,
-        source=["text", "chunk_id", "file_directory"]
+        query=keyword_query,
+        knn=vector_query,
+        # source=["text", "chunk_id", "file_directory"]
     )
 
     result_docs = []
@@ -57,7 +72,7 @@ def build_prompt(query, search_results):
     for doc in search_results:
         context = context + \
             f"file_directory: {doc['file_directory']}\n" + \
-            f"chunk_id: {doc['chunk_id']}\nanswer: {doc['text']}\n\n"
+            f"answer: {doc['text']}\n\n"
 
     prompt = prompt_template.format(question=query, context=context).strip()
     return prompt
@@ -73,7 +88,7 @@ def llm(prompt):
 
 def rag(query):
     vector_search_term = model.encode(query)
-    search_results = vector_elastic_search(vector_search_term)
+    search_results = vector_elastic_search(query, vector_search_term)
     prompt = build_prompt(query, search_results)
     answer = llm(prompt)
     return answer
