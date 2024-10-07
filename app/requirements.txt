@@ -1,4 +1,4 @@
-flask
-elasticsearch
-sentence-transformers
-openai
+flask==3.0.3
+elasticsearch==8.15.1
+sentence-transformers==3.1.1
+openai==1.51.0
