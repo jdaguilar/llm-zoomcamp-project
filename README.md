@@ -84,7 +84,8 @@ The Apache Hudi Assistant consists of several components working together:
 
 4. Once the pipeline is complete, access the Apache Hudi Assistant web interface at http://localhost:5000.
 
-    > [!IMPORTANT]  
-    > You must wait DAG complete all task before use the Web App.
-    >
-    >The first time you ask to the Hudi Assistant, it will try to download Llama3 model, so the first answer could be slow to retrieve.
+> [!IMPORTANT]  
+> You must wait DAG complete all task before use the Web App.
+
+> [!NOTE]
+>The first time you ask to the Hudi Assistant, it will try to download Llama3 model, so the first answer could be slow to retrieve.
