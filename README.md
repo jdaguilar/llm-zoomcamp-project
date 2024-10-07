@@ -40,6 +40,8 @@ Hudi users need quick and accurate answers to their questions about Hudi's funct
 
 ## 🏗️ Architecture
 
+![Architecture Diagram](static/architecture.png)
+
 The Apache Hudi Assistant consists of several components working together:
 
 1. **Data Ingestion:** Airflow DAG download the Apache Hudi's Documentation from the website. All downloaded files are in HTML format.
