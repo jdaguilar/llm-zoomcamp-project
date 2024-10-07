@@ -74,15 +74,29 @@ The Apache Hudi Assistant consists of several components working together:
     git clone git@github.com:jdaguilar/llm-zoomcamp-project.git
     ```
 
-2. Start the Docker containers:
+2. Set up env varibles.
+
+    Create a `.env` file using the following code:
+    
+    ```bash
+    echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > .env
+    ```
+    
+    then add the following line to the `.env` file:
+    
+    ```
+    _PIP_ADDITIONAL_REQUIREMENTS=unstructured==0.15.13 elasticsearch==8.15.1 beautifulsoup4==4.12.3 lxml==5.3.0 sentence-transformers==3.1.1
+    ```
+    
+3. Start the Docker containers:
 
     ```
     docker compose up -d
     ```
 
-3. Access the Airflow web interface at http://localhost:8080 and trigger the RAG pipeline DAG to process the documentation. The DAG name is `hudi_assistant_dag`
+4. Access the Airflow web interface at http://localhost:8080 and trigger the RAG pipeline DAG to process the documentation. The DAG name is `hudi_assistant_dag`
 
-4. Once the pipeline is complete, access the Apache Hudi Assistant web interface at http://localhost:5000.
+5. Once the pipeline is complete, access the Apache Hudi Assistant web interface at http://localhost:5000.
 
 > [!IMPORTANT]  
 > You must wait DAG complete all task before use the Web App.
