@@ -1,5 +1,7 @@
 # Apache Hudi Assistant
 
+![Example WebUI](static/example.png)
+
 ## 📝 Project Overview
 
 Apache Hudi Assistant is a Retrieval-Augmented Generation (RAG) system designed to provide responses to questions about Apache Hudi. This project leverages the Apache Hudi documentation as its knowledge base, offering users accurate and context-aware information about Apache Hudi's features, configurations, and best practices.
