@@ -20,9 +20,9 @@ def partition_and_chunk_html(filename, **kwargs):
     elements = partition_html(filename)
     chunks = chunk_by_title(
         elements,
-        max_characters=10000,
+        max_characters=1024,
         multipage_sections=False,
-        combine_text_under_n_chars=10000,
+        combine_text_under_n_chars=1024,
     )
     return [chunk.to_dict() for chunk in chunks]
 
