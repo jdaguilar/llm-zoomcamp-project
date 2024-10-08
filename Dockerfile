@@ -29,7 +29,7 @@ RUN pip install --no-cache-dir \
     sentence-transformers==3.1.1
 
 RUN mkdir -p /opt/airflow/data/docs && mkdir -p /opt/airflow/data/clean_docs
-
+RUN chmod -R a+rwx /opt/airflow/data
 
 # Set the working directory
 WORKDIR /opt/airflow

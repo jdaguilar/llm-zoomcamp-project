@@ -2,8 +2,8 @@ from bs4 import BeautifulSoup
 import os
 
 # Directory containing the downloaded HTML files
-html_dir = "/tmp/data/docs"
-cleaned_html_dir = "/tmp/data/clean_docs"
+html_dir = "/opt/airflow/data/docs"
+cleaned_html_dir = "/opt/airflow/data/clean_docs"
 
 # Ensure the cleaned directory exists
 os.makedirs(cleaned_html_dir, exist_ok=True)
