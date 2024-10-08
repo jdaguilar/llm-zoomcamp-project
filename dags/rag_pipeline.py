@@ -80,7 +80,7 @@ def index_to_elasticsearch(operations, **kwargs):
 
 @task
 def list_files_to_xcom(**kwargs):
-    command = "find /tmp/data/clean_docs -type f -name '*.html' | sort"
+    command = "find /opt/airflow/data/clean_docs -type f -name '*.html' | sort"
     result = subprocess.run(command, shell=True,
                             capture_output=True, text=True)
     file_list = result.stdout.strip().split("\n")
@@ -129,7 +129,7 @@ with DAG(
     download_docs = BashOperator(
         task_id="download_docs",
         bash_command="""
-        export EFS_DIR=/tmp/data/docs
+        export EFS_DIR=/opt/airflow/data/docs
 
         wget -e robots=off --recursive --no-clobber --page-requisites \
         --html-extension --convert-links --restrict-file-names=windows \
